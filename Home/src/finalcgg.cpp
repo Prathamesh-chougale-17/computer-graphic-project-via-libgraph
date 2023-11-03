@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <graphics.h>
+#include <iostream>
 
 // flood fill
 void flood(int x, int y, int new_col, int old_col)
@@ -166,7 +167,8 @@ int main()
 
     int xmin, ymin, xmax, ymax;
     printf("Enter the clipping window coordinates (xmin ymin xmax ymax): ");
-    scanf("%d %d %d %d", &xmin, &ymin, &xmax, &ymax);
+    // scanf("%d %d %d %d", &xmin, &ymin, &xmax, &ymax);
+    std::cin >> xmin >> ymin >> xmax >> ymax;
 
     rectangle(xmin, ymin, xmax, ymax);
 
@@ -201,16 +203,62 @@ int main()
     cohenSutherlandClip(340, 280, 380, 280, xmin, ymin, xmax, ymax);
     cohenSutherlandClip(340, 240, 340, 280, xmin, ymin, xmax, ymax);
 
-    int x1[2] = {300, 300};
-    int y1[2] = {110, 160};
-
-    int newcolor1[2] = {6, 7};
-
-    int oldcolor1 = 0;
-
-    for (int i = 0; i < 2; i++)
+    if (ymax < 201)
     {
-        flood(x[i], y[i], newcolor1[i], oldcolor1);
+
+        int x1[2] = {300, 300};
+        int y1[2] = {110, 136};
+
+        int newcolor1[2] = {6, 7};
+
+        int oldcolor1 = 0;
+
+        for (int i = 0; i < 2; i++)
+        {
+            flood(x[i], y[i], newcolor1[i], oldcolor1);
+        }
+    }
+    else if (ymax > 200 && ymax < 241)
+    {
+        int x3[3] = {300, 300, 240};
+        int y3[3] = {110, 136, 210};
+
+        int newcolor3[3] = {6, 7, 4};
+
+        int oldcolor3 = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            flood(x[i], y[i], newcolor3[i], oldcolor3);
+        }
+    }
+    else if (ymax > 240 && ymax < 301)
+    {
+        int x2[5] = {300, 300, 300, 240, 360};
+        int y2[5] = {110, 136, 210, 241, 241};
+
+        int newcolor2[5] = {6, 7, 4, 9, 9};
+
+        int oldcolor2 = 0;
+
+        for (int i = 0; i < 5; i++)
+        {
+            flood(x[i], y[i], newcolor2[i], oldcolor2);
+        }
+    }
+    else if (ymax > 300)
+    {
+        int x4[7] = {300, 300, 210, 240, 360, 321, 276}; // 276
+        int y4[7] = {110, 160, 210, 250, 260, 301, 301}; // 301
+
+        int newcolor4[7] = {6, 7, 4, 9, 9, 9, 8};
+
+        int oldcolor4 = 0;
+
+        for (int i = 0; i < 7; i++)
+        {
+            flood(x[i], y[i], newcolor4[i], oldcolor4);
+        }
     }
 
     // //house
